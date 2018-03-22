@@ -31,7 +31,7 @@ public final class Config {
     public static Set<String> patchMethodSignatureSet = new HashSet<>();
     public static List<String> newlyAddedClassNameList = new ArrayList<String>();
     public static Set newlyAddedMethodSet = new HashSet<String>();
-    public static List<String> modifiedClassNameList = new ArrayList<String>();
+    public static List<String> modifiedClassNameList = new ArrayList<String>();// 记录里面有标记了 modify 的类
     public static List<String> hotfixPackageList = new ArrayList<>();
     public static LinkedHashMap<String, Integer> methodMap = new LinkedHashMap<>();
     public static  String robustGenerateDirectory;

@@ -224,7 +224,7 @@ public class SmaliTool {
                             returnType = String.valueOf(((CtPrimitiveType) ctMethod.getReturnType()).getDescriptor());
                         }
                         if (NameManger.getInstance().getPatchNameMap().get(fullClassName).equals(fullClassName)) {
-                            result = result.replace("p0", "p1");
+                            result = result.replace("p0", "p1");// 在方法中，p0代指“this”，p1表示函数的第一个参数，p2代表函数中的第二个参数
                         }
                         String fullClassNameInSmali = ctMethod.getDeclaringClass().getClassPool().get(fullClassName).getSuperclass().getName().replaceAll("\\.", "/");
                         result = result.replace(result.substring(result.indexOf(PACKNAME_START) + 1, result.indexOf(PACKNAME_END)), fullClassNameInSmali);
@@ -290,7 +290,7 @@ public class SmaliTool {
         }
         StringBuilder methodSignureBuilder = new StringBuilder();
         methodSignureBuilder.append(line.substring(0, line.indexOf("(") + 1));
-        String parameter = line.substring(line.indexOf("("), line.indexOf(")") + 1);
+        String parameter = line.substring(line.indexOf("("), line.indexOf(")") + 1);// 方法中参数
         int endIndex = line.indexOf(")");
         String methodSigure = line.substring(0, endIndex + 1);
         //invokeReflectConstruct(Ljava/lang/String;[Ljava/lang/Object;[Ljava/lang/Class;)Ljava/lang/Object;

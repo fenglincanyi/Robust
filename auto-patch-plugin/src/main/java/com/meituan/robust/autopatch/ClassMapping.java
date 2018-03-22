@@ -6,6 +6,19 @@ import java.util.Map;
 /**
  * Created by mivanzhang on 16/7/29.
  * ClassMapping stores mapping info read from mapping.txt
+ *
+ * 如：
+ * com.xx.android.xx.xx.xx.xx.XXXXX -> com.xx.android.xx.xx.xx.b.g:
+ * 存储到 ==>
+ * className="com.xx.android.xx.xx.xx.xx.XXXXX", valueName="com.xx.android.xx.xx.xx.b.g"
+ *
+ * 成员（属性、方法）
+ * java.lang.ref.WeakReference mViewRef -> b
+ * int getCount(params[]) -> b
+ *
+ * 存储到 ==>
+ * memberMapping<"java.lang.ref.WeakReference mViewRef", "b">
+ * memberMapping<"int getCount(params[])", "b">
  */
 public class ClassMapping {
     //method 存储的信息有：返回值，方法名，参数列表，混淆后的名字

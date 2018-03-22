@@ -17,6 +17,10 @@ import java.util.Map;
 public class ReadMapping {
     private static ReadMapping instance;
 
+    /**
+     * 存储了整个mapping.txt的内容
+     * <类名，类中所有混淆信息>
+     */
     private Map<String, ClassMapping> usedInModifiedClassMappingInfo = new HashMap<String, ClassMapping>();
 
     public static ReadMapping getInstance() {
@@ -120,9 +124,13 @@ public class ReadMapping {
     }
 
     /***
-     * @param returnTypeWithNumber
-     * @param methodSignure
+     * @param returnTypeWithNumber 返回类型
+     * @param methodSignure 方法名
      * @return returnType+" "+methodSignure,just one blank
+     *
+     * 如：java.lang.Object packGroup(params[])
+     * returnTypeWithNumber = java.lang.Object
+     * methodSignure = packGroup(params[])
      */
 
     public String getMethodSigureWithReturnTypeInMapping(String returnTypeWithNumber, String methodSignure) {

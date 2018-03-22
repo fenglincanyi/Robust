@@ -189,7 +189,7 @@ class AutoPatchTransform extends Transform implements Plugin<Project> {
                 CtClass ctClass = Config.classPool.get(fullClassName)
                 CtClass patchClass = PatchesFactory.createPatch(patchPath, ctClass, false, NameManger.getInstance().getPatchName(ctClass.name), Config.patchMethodSignatureSet)
                 patchClass.writeFile(patchPath)
-                patchClass.defrost();
+                patchClass.defrost();//Javassist 类如果冻结，无法在对字节码进行编辑；此处要解冻
                 createControlClass(patchPath, ctClass)
             }
             createPatchesInfoClass(patchPath);
@@ -201,7 +201,7 @@ class AutoPatchTransform extends Transform implements Plugin<Project> {
         }
 
     }
-    def deleteTmpFiles(){
+    def deleteTmpFiles(){// 删除了中间生成的修复包的各个类，最终是打到了 patch.jar中
         File diretcory=new File(Config.robustGenerateDirectory);
         if(!diretcory.isDirectory()){
             throw new RuntimeException("patch directry "+Config.robustGenerateDirectory+" dones not exist");
